@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Sprites/WarpGatePink.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/WarpGateBlue.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/WarpGateGreen.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/WarpGateYellow.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Scripts/WarpGate.gd" type="Script" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 26.1725
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="WarpGate" type="Area2D"]
+collision_layer = 2147483712
+collision_mask = 10
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.25, 1.75 )
+shape = SubResource( 1 )
+
+[node name="WarpGate" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+frame = 3
+playing = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+[connection signal="body_entered" from="." to="." method="_on_WarpGate_body_entered"]
+[connection signal="incEgg" from="." to="." method="_on_WarpGate_incEgg"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

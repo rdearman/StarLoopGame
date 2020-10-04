@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/new_spriteframes.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Scenes/Scripts/Steve.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sfx/jump.wav" type="AudioStream" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 23.6818
+
+[node name="Steve" type="KinematicBody2D" groups=[
+"player",
+]]
+collision_mask = 31
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.353546, 0 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = ExtResource( 1 )
+animation = "spin"
+frame = 4
+playing = true
+
+[node name="soundJump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )

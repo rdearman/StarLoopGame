@@ -1,0 +1,320 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Scenes/new_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Steve.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/OneWayTiles.tres" type="TileSet" id=3]
+[ext_resource path="res://Assets/Backgrounds/PlainSky.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Backgrounds/RedStars.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Backgrounds/Moons.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Egg.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/EggEater.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/WarpGate.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Fonts/BalsamiqSans/BalsamiqSans-Bold.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://Assets/Sprites/Egg.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/EggCrack3.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/Scripts/HUD.gd" type="Script" id=13]
+[ext_resource path="res://Assets/Music/background.ogg" type="AudioStream" id=14]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 16 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 96, 16 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0784314, 0.0666667, 0.470588, 0.184314 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+outline_color = Color( 0.0980392, 0.690196, 0.207843, 1 )
+font_data = ExtResource( 10 )
+
+[node name="LevelOne" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="BlueSky" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1280, 960 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/BlueSky"]
+position = Vector2( -16, 0 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="ShiftingBG" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.7, 1 )
+motion_mirroring = Vector2( 1280, 960 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ShiftingBG"]
+modulate = Color( 1, 1, 1, 0.67451 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="ShiftingBG2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.4, 1 )
+motion_mirroring = Vector2( 1280, 960 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ShiftingBG2"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="SolidTiles" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+collision_bounce = 0.6
+collision_mask = 25
+format = 1
+tile_data = PoolIntArray( -1441792, 7, 0, -1441791, 7, 0, -1441790, 7, 0, -1441789, 7, 0, -1441788, 7, 0, -1441787, 7, 0, -1441786, 7, 0, -1441785, 7, 0, -1441784, 7, 0, -1441783, 7, 0, -1441782, 7, 0, -1441781, 7, 0, -1441780, 7, 0, -1441779, 7, 0, -1441778, 7, 0, -1441777, 7, 0, -1441776, 7, 0, -1441775, 7, 0, -1441774, 7, 0, -1441773, 7, 0, -1441772, 7, 0, -1441771, 7, 0, -1441770, 7, 0, -1441769, 7, 0, -1441768, 7, 0, -1441767, 7, 0, -1441766, 7, 0, -1441765, 7, 0, -1441764, 7, 0, -1441763, 7, 0, -1441762, 7, 0, -1441761, 7, 0, -1441760, 7, 0, -1441759, 7, 0, -1441758, 7, 0, -1441757, 7, 0, -1441756, 7, 0, -1441755, 7, 0, -1441754, 6, 0, -1376256, 6, 0, -1376218, 6, 0, -1310720, 6, 0, -1310682, 6, 0, -1245184, 6, 0, -1245146, 6, 0, -1179648, 6, 0, -1179610, 6, 0, -1114112, 6, 0, -1114074, 6, 0, -1048576, 6, 0, -1048538, 6, 0, -983040, 6, 0, -983002, 6, 0, -917504, 6, 0, -917466, 6, 0, -851968, 6, 0, -851930, 6, 0, -786432, 6, 0, -786394, 6, 0, -720896, 6, 0, -720858, 6, 0, -655360, 6, 0, -655322, 6, 0, -589824, 6, 0, -589786, 6, 0, -524288, 6, 0, -524250, 6, 0, -458752, 6, 0, -458714, 6, 0, -393216, 6, 0, -393178, 6, 0, -327680, 6, 0, -327642, 6, 0, -262144, 6, 0, -262106, 6, 0, -196608, 6, 0, -196570, 6, 0, -131072, 6, 0, -131034, 6, 0, -65536, 6, 0, -65498, 6, 0, 0, 6, 0, 38, 1610612741, 0, 65536, 6, 0, 65574, 1610612741, 0, 131072, 6, 0, 131110, 1610612741, 0, 196608, 6, 0, 196637, 1610612740, 0, 196638, 1610612736, 0, 196639, 1610612736, 0, 196640, 1610612738, 0, 196646, 1610612741, 0, 262144, 6, 0, 262171, 1610612740, 0, 262172, 1610612745, 0, 262173, 1610612736, 0, 262174, 1610612736, 0, 262175, 1610612736, 0, 262176, 1610612736, 0, 262177, 1610612745, 0, 262178, 1610612736, 0, 262182, 1610612741, 0, 327680, 6, 0, 327707, 1610612736, 0, 327708, 1610612736, 0, 327709, 1610612736, 0, 327710, 1610612736, 0, 327711, 1610612736, 0, 327712, 1610612736, 0, 327713, 1610612736, 0, 327714, 1610612736, 0, 327716, 1610612745, 0, 327717, 1610612745, 0, 327718, 1610612741, 0, 393216, 6, 0, 393223, 1, 0, 393242, 1610612740, 0, 393243, 1610612736, 0, 393244, 1610612736, 0, 393245, 1610612736, 0, 393246, 1610612736, 0, 393247, 1610612736, 0, 393248, 1610612736, 0, 393249, 1610612736, 0, 393250, 1610612736, 0, 393251, 1610612738, 0, 393252, 1610612738, 0, 393253, 1610612738, 0, 393254, 1610612741, 0, 458752, 6, 0, 458758, 3, 0, 458759, 0, 0, 458760, 0, 0, 458761, 1, 0, 458768, 3, 0, 458769, 1610612736, 0, 458770, 1610612745, 0, 458771, 1610612736, 0, 458772, 1610612736, 0, 458773, 1610612736, 0, 458774, 1610612736, 0, 458775, 1610612736, 0, 458776, 1610612736, 0, 458777, 1610612736, 0, 458778, 1610612736, 0, 458779, 1610612736, 0, 458780, 1610612736, 0, 458781, 1610612736, 0, 458782, 1610612736, 0, 458783, 1610612736, 0, 458784, 1610612736, 0, 458785, 1610612736, 0, 458786, 1610612736, 0, 458787, 1610612736, 0, 458788, 1610612736, 0, 458789, 1610612736, 0, 458790, 1610612741, 0, 524288, 6, 0, 524293, 3, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 1, 0, 524303, 3, 0, 524304, 1610612736, 0, 524305, 1610612736, 0, 524306, 1610612736, 0, 524307, 1610612736, 0, 524308, 1610612736, 0, 524309, 1610612736, 0, 524310, 1610612736, 0, 524311, 1610612736, 0, 524312, 1610612736, 0, 524313, 1610612736, 0, 524314, 1610612736, 0, 524315, 1610612736, 0, 524316, 1610612736, 0, 524317, 1610612736, 0, 524318, 1610612736, 0, 524319, 1610612736, 0, 524320, 1610612736, 0, 524321, 1610612736, 0, 524322, 1610612736, 0, 524323, 1610612736, 0, 524324, 1610612736, 0, 524325, 1610612736, 0, 524326, 1610612741, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 1610612736, 0, 589829, 1610612736, 0, 589830, 1610612736, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 1610612736, 0, 589842, 1610612736, 0, 589843, 1610612736, 0, 589844, 1610612736, 0, 589845, 1610612736, 0, 589846, 1610612736, 0, 589847, 1610612736, 0, 589848, 1610612736, 0, 589849, 1610612736, 0, 589850, 1610612736, 0, 589851, 1610612736, 0, 589852, 1610612736, 0, 589853, 1610612736, 0, 589854, 1610612736, 0, 589855, 1610612736, 0, 589856, 1610612736, 0, 589857, 1610612736, 0, 589858, 1610612736, 0, 589859, 1610612736, 0, 589860, 1610612736, 0, 589861, 1610612736, 0, 589862, 1610612741, 0, 655360, 1610612736, 0, 655361, 1610612736, 0, 655362, 1610612736, 0, 655363, 1610612736, 0, 655364, 1610612736, 0, 655365, 1610612736, 0, 655366, 1610612736, 0, 655367, 1610612736, 0, 655368, 1610612736, 0, 655369, 1610612736, 0, 655370, 1610612736, 0, 655371, 1610612736, 0, 655372, 1610612736, 0, 655373, 1610612736, 0, 655374, 1610612736, 0, 655375, 1610612736, 0, 655376, 1610612736, 0, 655377, 1610612736, 0, 655378, 1610612736, 0, 655379, 1610612736, 0, 655380, 1610612736, 0, 655381, 1610612736, 0, 655382, 1610612736, 0, 655383, 1610612736, 0, 655384, 1610612736, 0, 655385, 1610612736, 0, 655386, 1610612736, 0, 655387, 1610612736, 0, 655388, 1610612736, 0, 655389, 1610612736, 0, 655390, 1610612736, 0, 655391, 1610612736, 0, 655392, 1610612736, 0, 655393, 1610612736, 0, 655394, 1610612736, 0, 655395, 1610612736, 0, 655396, 1610612736, 0, 655397, 1610612736, 0, 655398, 1610612736, 0, 720896, 1610612736, 0, 720897, 1610612736, 0, 720898, 1610612736, 0, 720899, 1610612736, 0, 720900, 1610612736, 0, 720901, 1610612736, 0, 720902, 1610612736, 0, 720903, 1610612736, 0, 720904, 1610612736, 0, 720905, 1610612736, 0, 720906, 1610612736, 0, 720907, 1610612736, 0, 720908, 1610612736, 0, 720909, 1610612736, 0, 720910, 1610612736, 0, 720911, 1610612736, 0, 720912, 1610612736, 0, 720913, 1610612736, 0, 720914, 1610612736, 0, 720915, 1610612736, 0, 720916, 1610612736, 0, 720917, 1610612736, 0, 720918, 1610612736, 0, 720919, 1610612736, 0, 720920, 1610612736, 0, 720921, 1610612736, 0, 720922, 1610612736, 0, 720923, 1610612736, 0, 720924, 1610612736, 0, 720925, 1610612736, 0, 720926, 1610612736, 0, 720927, 1610612736, 0, 720928, 1610612736, 0, 720929, 1610612736, 0, 720930, 1610612736, 0, 720931, 1610612736, 0, 720932, 1610612736, 0, 720933, 1610612736, 0, 720934, 1610612736, 0, 786432, 1610612736, 0, 786433, 1610612736, 0, 786434, 1610612736, 0, 786435, 1610612736, 0, 786436, 1610612736, 0, 786437, 1610612736, 0, 786438, 1610612736, 0, 786439, 1610612736, 0, 786440, 1610612736, 0, 786441, 1610612736, 0, 786442, 1610612736, 0, 786443, 1610612736, 0, 786444, 1610612736, 0, 786445, 1610612736, 0, 786446, 1610612736, 0, 786447, 1610612736, 0, 786448, 1610612736, 0, 786449, 1610612736, 0, 786450, 1610612736, 0, 786451, 1610612736, 0, 786452, 1610612736, 0, 786453, 1610612736, 0, 786454, 1610612736, 0, 786455, 1610612736, 0, 786456, 1610612736, 0, 786457, 1610612736, 0, 786458, 1610612736, 0, 786459, 1610612736, 0, 786460, 1610612736, 0, 786461, 1610612736, 0, 786462, 1610612736, 0, 786463, 1610612736, 0, 786464, 1610612736, 0, 786465, 1610612736, 0, 786466, 1610612736, 0, 786467, 1610612736, 0, 786468, 1610612736, 0, 786469, 1610612736, 0, 786470, 1610612736, 0 )
+
+[node name="bouncers" type="Area2D" parent="."]
+scale = Vector2( 2, 2 )
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bouncers"]
+position = Vector2( 592, 232 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="bouncers"]
+position = Vector2( 912, 136 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="bouncers"]
+position = Vector2( 1072, 136 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="bouncers"]
+position = Vector2( 1200, 168 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="bouncers"]
+position = Vector2( 1168, 168 )
+shape = SubResource( 1 )
+
+[node name="OneWayTiles" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+collision_mask = 25
+format = 1
+tile_data = PoolIntArray( 131072, 1610612737, 0, 131073, 1610612737, 0, 131074, 1610612737, 0, 131098, 1610612737, 0, 131099, 1610612737, 0, 131100, 1610612737, 0, 131107, 1610612737, 0, 131108, 1610612737, 0, 131109, 1610612737, 0, 196611, 1610612737, 0, 196633, 1610612737, 0, 262146, 1610612737, 0, 262161, 1610612737, 0, 262162, 1610612737, 0, 262163, 1610612737, 0, 262165, 1610612737, 0, 262166, 1610612737, 0, 262167, 1610612737, 0, 327683, 1610612737, 0, 327696, 1610612737, 0, 327700, 1610612737, 0, 393218, 1, 0, 393231, 1610612737, 0 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="OneWayTiles"]
+
+[node name="small1" type="CollisionShape2D" parent="OneWayTiles/StaticBody2D"]
+position = Vector2( 1632, 208 )
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="small2" type="CollisionShape2D" parent="OneWayTiles/StaticBody2D"]
+position = Vector2( 1056, 336 )
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="small3" type="CollisionShape2D" parent="OneWayTiles/StaticBody2D"]
+position = Vector2( 992, 400 )
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="small5" type="CollisionShape2D" parent="OneWayTiles/StaticBody2D"]
+position = Vector2( 224, 208 )
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="small6" type="CollisionShape2D" parent="OneWayTiles/StaticBody2D"]
+position = Vector2( 160, 272 )
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="small7" type="CollisionShape2D" parent="OneWayTiles/StaticBody2D"]
+position = Vector2( 224, 336 )
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="small8" type="CollisionShape2D" parent="OneWayTiles/StaticBody2D"]
+position = Vector2( 160, 432 )
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="small4" type="CollisionShape2D" parent="OneWayTiles/StaticBody2D"]
+position = Vector2( 1312, 336 )
+shape = SubResource( 2 )
+one_way_collision = true
+
+[node name="Large1" type="CollisionShape2D" parent="OneWayTiles/StaticBody2D"]
+position = Vector2( 1760, 144 )
+shape = SubResource( 3 )
+one_way_collision = true
+
+[node name="Large6" type="CollisionShape2D" parent="OneWayTiles/StaticBody2D"]
+position = Vector2( 1184, 272 )
+shape = SubResource( 3 )
+one_way_collision = true
+
+[node name="Large4" type="CollisionShape2D" parent="OneWayTiles/StaticBody2D"]
+position = Vector2( 96, 144 )
+shape = SubResource( 3 )
+one_way_collision = true
+
+[node name="Large5" type="CollisionShape2D" parent="OneWayTiles/StaticBody2D"]
+position = Vector2( 96, 144 )
+shape = SubResource( 3 )
+one_way_collision = true
+
+[node name="Large2" type="CollisionShape2D" parent="OneWayTiles/StaticBody2D"]
+position = Vector2( 1440, 272 )
+shape = SubResource( 3 )
+one_way_collision = true
+
+[node name="Large3" type="CollisionShape2D" parent="OneWayTiles/StaticBody2D"]
+position = Vector2( 2336, 144 )
+shape = SubResource( 3 )
+one_way_collision = true
+
+[node name="Egg" parent="." instance=ExtResource( 7 )]
+position = Vector2( 368, 240 )
+scale = Vector2( 2, 2 )
+collision_mask = 113
+
+[node name="EggEaters" type="Node2D" parent="."]
+
+[node name="EggEater" parent="EggEaters" instance=ExtResource( 8 )]
+position = Vector2( 672, 480 )
+direction = 1
+
+[node name="EggEater2" parent="EggEaters" instance=ExtResource( 8 )]
+position = Vector2( 2368, 288 )
+direction = 1
+
+[node name="EggEater3" parent="EggEaters" instance=ExtResource( 8 )]
+position = Vector2( 1376, 240 )
+direction = 1
+
+[node name="EggEater4" parent="EggEaters" instance=ExtResource( 8 )]
+position = Vector2( 2080, 208 )
+direction = 1
+
+[node name="EggEater5" parent="EggEaters" instance=ExtResource( 8 )]
+position = Vector2( 1824, 240 )
+direction = 1
+
+[node name="EggEater6" parent="EggEaters" instance=ExtResource( 8 )]
+position = Vector2( 1184, 432 )
+direction = 1
+
+[node name="Steve" parent="." instance=ExtResource( 2 )]
+position = Vector2( 496, 208 )
+
+[node name="Camera2D" type="Camera2D" parent="Steve"]
+position = Vector2( 0.352997, 6.7276 )
+current = true
+limit_left = 31
+limit_top = -500
+limit_right = 2450
+limit_bottom = 750
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+drag_margin_left = 0.5
+drag_margin_right = 0.5
+editor_draw_limits = true
+
+[node name="WarpGate" parent="." instance=ExtResource( 9 )]
+position = Vector2( 2400, 96 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource( 13 )
+
+[node name="Panel" type="Panel" parent="HUD"]
+margin_left = 32.0
+margin_right = 288.0
+margin_bottom = 64.0
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SavedImg" type="TextureRect" parent="HUD"]
+margin_left = 32.0
+margin_right = 80.0
+margin_bottom = 48.0
+texture = ExtResource( 11 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BrokenImg" type="TextureRect" parent="HUD"]
+margin_left = 160.0
+margin_right = 208.0
+margin_bottom = 48.0
+texture = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="equals" type="Label" parent="HUD"]
+margin_left = 80.0
+margin_right = 108.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.831373, 0.94902, 0.164706, 1 )
+text = "= "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="equals2" type="Label" parent="HUD"]
+margin_left = 208.0
+margin_right = 236.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.831373, 0.94902, 0.164706, 1 )
+text = "= "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Saved" type="Label" parent="HUD"]
+margin_left = 112.0
+margin_right = 160.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.831373, 0.94902, 0.164706, 1 )
+text = "##"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Broken" type="Label" parent="HUD"]
+margin_left = 240.0
+margin_right = 278.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.831373, 0.94902, 0.164706, 1 )
+text = "##"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicBackground" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 14 )
+volume_db = -15.0
+autoplay = true
+[connection signal="body_entered" from="bouncers" to="Steve" method="_on_bouncers_body_entered"]
+[connection signal="eggStatus" from="Egg" to="HUD" method="_on_Egg_eggStatus"]
+[connection signal="incEgg" from="WarpGate" to="HUD" method="_on_WarpGate_incEgg"]

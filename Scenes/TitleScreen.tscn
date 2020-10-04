@@ -1,0 +1,274 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Assets/Menu_Assets/SpaceBarKey.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Menu_Assets/AltKey.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Fonts/THICKHEA.TTF" type="DynamicFontData" id=3]
+[ext_resource path="res://Assets/Fonts/dirtydoz.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Assets/Sprites/Standing.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/Egg.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/EggEater.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/WarpGateBlue.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Scripts/PlayButton.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Music/TitleScene.ogg" type="AudioStream" id=10]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0509804, 0.8, 0.905882, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.0666667, 0.815686, 0.341176, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFont" id=2]
+size = 35
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 78
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.109804, 0.733333, 0.956863, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.101961, 0.933333, 0.0784314, 1 )
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="DynamicFont" id=5]
+size = 25
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 64
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 608.0
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 48.0
+margin_top = 368.0
+margin_right = 448.0
+margin_bottom = 568.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="Label2" type="Label" parent="Panel"]
+margin_left = 96.0
+margin_top = 128.0
+margin_right = 391.0
+margin_bottom = 229.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0509804, 0.0823529, 0.905882, 1 )
+text = "= Jump"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Panel"]
+margin_left = -64.0
+margin_right = 231.0
+margin_bottom = 101.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0509804, 0.0823529, 0.905882, 1 )
+text = "Controls"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Panel"]
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 423.0
+margin_bottom = 165.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0509804, 0.0823529, 0.905882, 1 )
+text = "= Throw Egg"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+margin_left = 16.0
+margin_right = 208.0
+margin_bottom = 160.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="Panel"]
+margin_left = -16.0
+margin_top = 64.0
+margin_right = 176.0
+margin_bottom = 224.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_right = 1024.0
+margin_bottom = 101.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.0705882, 0.807843, 0.0705882, 1 )
+text = "Ludum Dare- Star Loop"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel2" type="Panel" parent="."]
+margin_left = 592.0
+margin_top = 272.0
+margin_right = 992.0
+margin_bottom = 572.0
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Panel2"]
+margin_left = 64.0
+margin_top = 144.0
+margin_right = 359.0
+margin_bottom = 245.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0509804, 0.0823529, 0.905882, 1 )
+text = "= Player"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="Panel2"]
+margin_left = 48.0
+margin_top = 80.0
+margin_right = 343.0
+margin_bottom = 181.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0509804, 0.0823529, 0.905882, 1 )
+text = "= Egg"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label8" type="Label" parent="Panel2"]
+margin_left = 112.0
+margin_top = 224.0
+margin_right = 407.0
+margin_bottom = 325.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0509804, 0.0823529, 0.905882, 1 )
+text = "= Warp Gate "
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="Panel2"]
+margin_left = 96.0
+margin_top = 16.0
+margin_right = 391.0
+margin_bottom = 117.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0509804, 0.0823529, 0.905882, 1 )
+text = "= Egg Eater"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Panel2"]
+margin_left = 16.0
+margin_top = 64.0
+margin_right = 80.0
+margin_bottom = 128.0
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect2" type="TextureRect" parent="Panel2"]
+margin_left = 16.0
+margin_top = 128.0
+margin_right = 80.0
+margin_bottom = 192.0
+texture = ExtResource( 5 )
+expand = true
+
+[node name="TextureRect4" type="TextureRect" parent="Panel2"]
+margin_left = 16.0
+margin_top = 208.0
+margin_right = 80.0
+margin_bottom = 272.0
+texture = ExtResource( 8 )
+expand = true
+
+[node name="TextureRect3" type="TextureRect" parent="Panel2"]
+margin_left = 16.0
+margin_top = -16.0
+margin_right = 80.0
+margin_bottom = 48.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = 48.0
+margin_top = 128.0
+margin_right = 592.0
+margin_bottom = 336.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0.0823529, 0.117647, 0.690196, 1 )
+text = "Get the egg into the
+warp-gate before the
+egg eaters get to it !
+
+Save as many eggs as you can"
+align = 1
+
+[node name="PlayButton" type="Button" parent="."]
+margin_left = 128.0
+margin_top = 288.0
+margin_right = 400.0
+margin_bottom = 352.0
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color_disabled = Color( 0.764706, 0.0745098, 0.0745098, 1 )
+custom_colors/font_color = Color( 0.0470588, 0.0705882, 0.941176, 1 )
+custom_colors/font_color_hover = Color( 0.0901961, 0.8, 0.0588235, 1 )
+text = "Play!"
+flat = true
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleSceneMusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+autoplay = true
+[connection signal="pressed" from="PlayButton" to="PlayButton" method="_on_PlayButton_pressed"]
